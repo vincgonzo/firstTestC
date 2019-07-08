@@ -2,78 +2,86 @@
 #include <stdlib.h>
 #include <time.h>
 
-int startAgain = 0, level = 0, value = 0;
 
-int main(){
-    do{
-        gameLevel();
-        levelValue(level);
-        printf("Vous avez choisi niveau %d.\n\n", level);
-        printf("-----------------------------------\n");
-        game(value);
-    }while(startAgain);
+int main()
 
-    return 0;
-}
-
-int levelValue(level)
 {
-    switch(level)
-    {
-        case 1:
-            value = 100;
-            break;
-        case 2:
-            value = 1000;
-            break;
-        case 3:
-            value = 10000;
-            break;
-    }
-    return value;
-}
+    int NM = 0, NU = 0;
+    int MAX = 10, MIN = 1; // declaration des variables + affectation
+    int comptecoup, partie = 1, diff = 0;
 
-int gameLevel()
-{
-    printf("Bienvenue, veuillez choisir votre niveau de difficultes sur le jeu.\n");
-    printf("1 = nombre entre 1 et 100;\n");
-    printf("2 = nombre entre 1 et 1000;\n");
-    printf("3 = nombre entre 1 et 10000;\n");
-    scanf("%d", &level);
-
-    return level;
-}
-
-int game(int level)
-{
-
-    const int MAX = level, MIN = 1;
-    int nbrEnter = 0, coups = 0;
-    srand(time(NULL));
-    int nombreMystere = (rand() % (MAX - MIN + 1)) + MIN;
-    //printf("le nombre mystere est : %d\net le level max du jeu %d", nombreMystere, level);
-    printf("\n============================================");
-    printf("\n============================================\n\n");
-    printf("Bienvenue dans le jeu du nombre mystere.");
-    printf("\n============================================\n\n");
 
     do
     {
-        printf("Tapez un nombre pour trouver le Mysterieux nombre.\n");
-        scanf("%d", &nbrEnter);
-        coups++;
-        if(nbrEnter > nombreMystere){
-                printf("C'est moins \n");
-        }else if(nbrEnter < nombreMystere){
-                    printf("C'est plus. \n");
-        }else if(nbrEnter == nombreMystere){
-            printf("WHouhouuuu, GAGNNNNNNNNERRRRR !!!!\n\n");
-            printf("tu as reussi en %d coups\n", coups);
-            printf("Veut tu refaire une partie ?\n 0 = Non\n 1 = Oui\n"),
-            scanf("%d", &startAgain);
+       printf ("veuillez choisir votre niveau de difficulte\n"
+               "1- facile\n"
+               "2- moyen\n"
+               "3- hardcore\n" );
+       scanf("%d", &diff); // choix du niveau de difficulte (saisie utilisateur)
+
+       do
+       {
+            switch(diff)
+            {
+                case 0:
+                    printf("allons un peu de courage ce n'est tout de meme pas si dur\n");
+                    printf ("veuillez choisir votre niveau de difficulte\n"
+                            "1- facile\n"
+                            "2- moyen\n"
+                            "3- hardcore\n" );
+                    scanf("%d", &diff); // choix du niveau de difficulte (saisie utilisateur)
+                break;
+                case 1:
+                    MAX = 100;
+                break;
+                case 2:
+                    MAX = 1000;
+                break;
+                case 3:
+                    MAX = 10000; // choix du niveau de difficulte (structure conditionnelle)
+                default:
+                    printf("hum un vrai hardcore gamer a ce que je vois...\nmalheuresement un tel niveau de difficulte n'est pas prevu\n\n");
+                    printf ("veuillez choisir votre niveau de difficulte\n"
+                            "1- facile\n"
+                            "2- moyen\n"
+                            "3- hardcore\n" );
+                    scanf("%d", &diff); //retour au choix de la difficulte
+                break;
+            }
+       }
+        while(diff < 1 || diff > 3);
+
+                comptecoup = 1;
+                srand(time(NULL));
+                NM = (rand() % (MAX - MIN + 1)) + MIN;  // l'ordi tire un nombre au hasard entre MAX et Min
+
+
+            do // coeur du jeu (saisie du nombre et tests)
+            {
+                printf("quel est le nombre mystere?\n");
+                scanf("%d", &NU);
+
+                if(NU>NM)
+                {
+                    printf ("c'est moins!\n");
+                    comptecoup++;
+                }
+                else if(NU<NM)
+                {
+                    printf("c'est plus!\n");
+                    comptecoup++;
+                }
+                else
+                {
+                    printf ("bravo! tu as trouve en %d coups\ntu veux refaire une partie ? 1 = oui, 0 = non\n", comptecoup); // Victwaaaare
+                    scanf("%d", &partie); // saisie pour une nouvelle partie
+                }
         }
-    }while(nbrEnter != nombreMystere);
 
-    return startAgain;
+        while(NU != NM);
+
+    }
+    while(partie);
+
+    return 0;
 }
-
