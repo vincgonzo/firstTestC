@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1562532267 source:c:\xampp\htdocs\firstconsole\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
