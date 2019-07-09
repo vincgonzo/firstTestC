@@ -4,13 +4,16 @@
 
 int sommeTableau(int tableau[], int tailleTableau);
 double moyenneTableau(int tableau[], int tailleTableau);
+void copie(int tableauOriginal[], int tableauCopie[], int tailleTableau);
 
 int main()
 {
     int tableau[4] = {10, 20, 15};
+    int arrayTest[4] = {0};
 
     sommeTableau(tableau, 4);
     moyenneTableau(tableau, 4);
+    copie(tableau, arrayTest, 4);
 
     return 0;
 }
@@ -30,7 +33,6 @@ double moyenneTableau(int array[], int tailleTableau)
     int sum = 0, loop = 0;
 
     for(loop = 0; loop < tailleTableau; loop++) {
-            printf("\nsum == %d", sum);
           sum = sum + array[loop];
     }
 
@@ -38,4 +40,16 @@ double moyenneTableau(int array[], int tailleTableau)
     printf("\nAverage of array values is %.2f", avg);
 
    return 0;
+}
+
+void copie(int tableauOriginal[], int tableauCopie[], int tailleTableau)
+{
+    int loop = 0;
+
+    for(loop = 0; loop < tailleTableau; loop++) {
+        tableauCopie[loop] = tableauOriginal[loop];
+        printf("\nfor entry : %d the array got value :: %d", loop, tableauCopie[loop]);
+    }
+    return 0;
+
 }
