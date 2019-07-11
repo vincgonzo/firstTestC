@@ -11,10 +11,9 @@ int main(){
     int StringLength = 0;
     char chaine[] = "Texte de test", *suiteChaine = NULL;
 
-    Coordonnees point;
+    Coordonnees monPoint;
 
-    point.x = 10;
-    point.y = 25;
+    initialiserCoordonnees(&monPoint);
 
     printf("We got a Coordinates Struct with x : %d -- and y : %d.\n", point.x, point.y);
 
@@ -34,6 +33,12 @@ int main(){
     }
 
     return 0;
+}
+
+void initialiserCoordonnees(Coordonnees* point)
+{
+    point.x = 10;
+    point.y = 25;
 }
 
 
