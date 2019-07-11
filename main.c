@@ -37,8 +37,9 @@ int main(){
 
 void initialiserCoordonnees(Coordonnees* point)
 {
-    point.x = 10;
-    point.y = 25;
+   point->x = 10;
+   // Strictly equivalent to ====>  (*point).x = 10;
+   (*point).y = 25;
 }
 
 
