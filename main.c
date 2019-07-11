@@ -7,39 +7,85 @@
 
 
 int main(){
-    char text[100], string[] = "Bouzouff";
-    int StringLength = 0;
-    char chaine[] = "Texte de test", *suiteChaine = NULL;
-
-    Coordonnees monPoint;
-
-    initialiserCoordonnees(&monPoint);
-
-    printf("We got a Coordinates Struct with x : %d -- and y : %d.\n", point.x, point.y);
-
-    printf("Comment t'appeles tu ? : ");
-    scanf("%s", text);
-    StringLength = strlen(text);
-    printf("Bienvenue %s, on va tester des trucs ensemble :)\nCette chaine de caractère fait %d de longueur.", text, StringLength);
-
-    strcat(text, string);
-    printf("\n\nPour la deconnade je dis %s\n", text);
+    int tries = 10, i =0;
+    char theSecretWord[] = "CLASSE", maLettre = 0;
+    int lettreTrouvee[6] = {0};
 
 
-    suiteChaine = strchr(chaine, 'd');
-    if (suiteChaine != NULL) // Si on a trouvé quelque chose
+    printf("Bienvenue dans le Pendu !\n\n");
+
+    while(tries > 0 && !gagne(lettreTrouvee))
     {
-        printf("Voici la fin de la chaine a partir du premier d : %s", suiteChaine);
+        printf("Il vous reste %d coups a jouer\n", tries);
+        printf("Quel est le mot secret ? ");
+
+        for (i = 0 ; i < 6 ; i++)
+        {
+            if (lettreTrouvee[i]) // Si on a trouvé la lettre n° i
+                printf("%c", theSecretWord[i]); // On l'affiche
+            else
+                printf("*"); // Sinon, on affiche une étoile pour les lettres non trouvées
+        }
+
+        printf("\nProposez une lettre :");
+        maLettre = lireCaractere();
+        rechercheLettre(maLettre, theSecretWord, lettreTrouvee);
+
+        if(!rechercheLettre(maLettre, theSecretWord, lettreTrouvee))
+            tries--;
     }
+
+
+    if( gagne(lettreTrouvee) )
+        printf("\n !!!! Fucking Winner here !!! Congrats word was :: %s", theSecretWord);
+    else
+        printf("\n Loser get the fuck out of here !!!!!!!!!! ");
+
 
     return 0;
 }
 
-void initialiserCoordonnees(Coordonnees* point)
+char lireCaractere()
 {
-   point->x = 10;
-   // Strictly equivalent to ====>  (*point).x = 10;
-   (*point).y = 25;
+    char caractere = 0;
+
+    caractere = getchar(); // On lit le premier caractère
+    caractere = toupper(caractere); // On met la lettre en majuscule si elle ne l'est pas déjà
+
+    // On lit les autres caractères mémorisés un à un jusqu'au \n (pour les effacer)
+    while (getchar() != '\n') ;
+
+    return caractere; // On retourne le premier caractère qu'on a lu
 }
 
+int gagne(int lettreTrouvee[])
+{
+    int i = 0;
+    int joueurGagne = 1;
 
+    for (i = 0 ; i < 6 ; i++)
+    {
+        if (lettreTrouvee[i] == 0)
+            joueurGagne = 0;
+    }
+
+    return joueurGagne;
+}
+
+int rechercheLettre(char lettre, char motSecret[], int lettreTrouvee[])
+{
+    int i = 0;
+    int bonneLettre = 0;
+
+    // On parcourt motSecret pour vérifier si la lettre proposée y est
+    for (i = 0 ; motSecret[i] != '\0' ; i++)
+    {
+        if (lettre == motSecret[i]) // Si la lettre y est
+        {
+            bonneLettre = 1; // On mémorise que c'était une bonne lettre
+            lettreTrouvee[i] = 1; // On met à 1 la case du tableau de booléens correspondant à la lettre actuelle
+        }
+    }
+
+    return bonneLettre;
+}

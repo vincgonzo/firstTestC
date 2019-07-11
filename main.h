@@ -17,3 +17,7 @@ int strcmp(const char* chaine1, const char* chaine2);
 char* strchr(const char* chaine, int caractereARechercher);
 // Search string into char array
 char* strstr(const char* chaine, const char* chaineARechercher);
+
+char lireCaractere();
+int rechercheLettre(char lettre, char motSecret[], int lettreTrouvee[]);
+int gagne(int lettreTrouvee[]); 
