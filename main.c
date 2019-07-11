@@ -7,11 +7,21 @@
 
 
 int main(){
-    printf("char : %d octets\n", sizeof(char));
-    printf("int : %d octets\n", sizeof(int));
-    printf("long : %d octets\n", sizeof(long));
-    printf("double : %d octets\n", sizeof(double));
 
+    int* memoireAllouee = NULL;
+
+    memoireAllouee = malloc(sizeof(int)); // Allocation de la mémoire
+    if (memoireAllouee == NULL)
+    {
+        exit(0);
+    }
+
+    // Utilisation de la mémoire
+    printf("Quel age avez-vous ? ");
+    scanf("%d", memoireAllouee);
+    printf("Vous avez %d ans\n", *memoireAllouee);
+
+    free(memoireAllouee); // Libération de mémoire
     return 0;
 }
 
