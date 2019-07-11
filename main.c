@@ -3,43 +3,25 @@
 #include <time.h>
 #include <string.h>
 #include "main.h"
-#include "coord.h"
 
 
-int main(){
-    char text[100], string[] = "Bouzouff";
-    int StringLength = 0;
-    char chaine[] = "Texte de test", *suiteChaine = NULL;
+int main(int argc, char *argv[])
+{
+    FILE* fichier = NULL;
 
-    Coordonnees monPoint;
-
-    initialiserCoordonnees(&monPoint);
-
-    printf("We got a Coordinates Struct with x : %d -- and y : %d.\n", point.x, point.y);
-
-    printf("Comment t'appeles tu ? : ");
-    scanf("%s", text);
-    StringLength = strlen(text);
-    printf("Bienvenue %s, on va tester des trucs ensemble :)\nCette chaine de caractère fait %d de longueur.", text, StringLength);
-
-    strcat(text, string);
-    printf("\n\nPour la deconnade je dis %s\n", text);
+    fichier = fopen("test.txt", "r+");
 
 
-    suiteChaine = strchr(chaine, 'd');
-    if (suiteChaine != NULL) // Si on a trouvé quelque chose
+    if (fichier != NULL)
     {
-        printf("Voici la fin de la chaine a partir du premier d : %s", suiteChaine);
+        // On peut lire et écrire dans le fichier
+    }
+    else
+    {
+        // On affiche un message d'erreur si on veut
+        printf("Impossible d'ouvrir le fichier test.txt");
     }
 
     return 0;
 }
-
-void initialiserCoordonnees(Coordonnees* point)
-{
-   point->x = 10;
-   // Strictly equivalent to ====>  (*point).x = 10;
-   (*point).y = 25;
-}
-
 
