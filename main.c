@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
     FILE* fichier = NULL;
+    int read = 0, caractereActuel = 0;
 
     fichier = fopen("test.txt", "r+");
 
@@ -15,6 +16,18 @@ int main(int argc, char *argv[])
     if (fichier != NULL)
     {
         // On peut lire et écrire dans le fichier
+        printf("Voulez vous lire le contenu du fichier ?\n1 -- Oui\n0 -- Non\n");
+        scanf("%d", &read);
+        if(read){
+            // Boucle de lecture des caractères un à un
+            do
+            {
+                caractereActuel = fgetc(fichier); // On lit le caractère
+                printf("%c", caractereActuel); // On l'affiche
+            } while (caractereActuel != EOF); // On continue tant que fgetc n'a pas retourné EOF (fin de fichier)
+
+        }
+        fclose(fichier);
     }
     else
     {
