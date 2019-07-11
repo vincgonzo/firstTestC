@@ -13,6 +13,11 @@ int main(){
 
     Coordonnees point;
 
+    point.x = 10;
+    point.y = 25;
+
+    printf("We got a Coordinates Struct with x : %d -- and y : %d.\n", point.x, point.y);
+
     printf("Comment t'appeles tu ? : ");
     scanf("%s", text);
     StringLength = strlen(text);
