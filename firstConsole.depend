@@ -4,3 +4,19 @@
 	<stdlib.h>
 	<time.h>
 
+1563438377 source:c:\xampp\htdocs\firsttestc\main.c
+	<stdio.h>
+	<ctype.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"main.h"
+	"coord.h"
+	"dico.h"
+
+1563438235 c:\xampp\htdocs\firsttestc\main.h
+
+1562834490 c:\xampp\htdocs\firsttestc\coord.h
+
+1563436886 c:\xampp\htdocs\firsttestc\dico.h
+

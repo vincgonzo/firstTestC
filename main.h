@@ -20,4 +20,4 @@ char* strstr(const char* chaine, const char* chaineARechercher);
 
 char lireCaractere();
 int rechercheLettre(char lettre, char motSecret[], int lettreTrouvee[]);
-int gagne(int lettreTrouvee[]); 
+int gagne(int lettreTrouvee[], int sizeLoop); 

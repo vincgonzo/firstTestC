@@ -9,6 +9,9 @@ dico.c
 Ces fonctions piochent au hasard un mot dans un fichier dictionnaire
 pour le jeu du pendu
 */
+#ifdef cplusplus
+#error Compile en C ...
+#endif // cplusplus
 
 #include <stdio.h>
 #include <stdlib.h>
