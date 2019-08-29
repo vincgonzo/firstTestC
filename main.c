@@ -10,23 +10,16 @@ double lireDouble();
 int lire(char *chaine, int longueur);
 
 int main(){
-    char nom[10];
-    long age = 0;
-    double poids = 0;
+    char str1[] = "Look HerE";
+	char str2[] = "Look Here";
+	char str3[] = "Look Here";
+	char str4[] = "Look Her";
 
-    /*printf("Quel est votre nom ? ");
-    lire(nom, 10);
-    printf("Ah ! Vous vous appelez donc %s !\n\n", nom);
+	printf("%d\n", strcmp(str1, str2));
+	printf("%d\n", strcmp(str2, str3));
+	printf("%d\n", strcmp(str3, str4));
 
-    printf("Quel est votre age ? ");
-    age = lireLong();
-    printf("Ah ! Vous avez donc %d ans !\n\n", age);*/
-
-    printf("Quel est votre poids ? ");
-    poids = lireDouble();
-    printf("Tu peses donc %d kg !\n\n", poids);
-
-    return 0;
+	return 0;
 }
 
 
