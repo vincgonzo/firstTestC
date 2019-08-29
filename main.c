@@ -9,15 +9,16 @@ long lireLong();
 double lireDouble();
 int lire(char *chaine, int longueur);
 
-int main(){
-    char str1[] = "Look HerE";
-	char str2[] = "Look Here";
-	char str3[] = "Look Here";
-	char str4[] = "Look Her";
+#define DEST_SIZE 40
 
-	printf("%d\n", strcmp(str1, str2));
-	printf("%d\n", strcmp(str2, str3));
-	printf("%d\n", strcmp(str3, str4));
+int main(){
+    char src[] = "Look Here";
+	char dest[DEST_SIZE] = "Unimaginable";
+
+	char *p = dest + 5;
+
+	strcpy(p, src);
+	printf(dest);
 
 	return 0;
 }
