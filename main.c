@@ -15,9 +15,10 @@ int main(){
     char src[] = "Look Here";
 	char dest[DEST_SIZE] = "Unimaginable";
 
-	char *p = dest + 5;
+	char *ps = src + 4;
+	char *pd = dest + strlen(dest);
 
-	strcpy(p, src);
+	strcpy(pd, ps);
 	printf(dest);
 
 	return 0;
