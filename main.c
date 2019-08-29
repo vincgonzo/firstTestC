@@ -9,54 +9,39 @@ long lireLong();
 double lireDouble();
 int lire(char *chaine, int longueur);
 
-#define DEST_SIZE 40
+#define NUMBER_OF_STRING 4
+#define MAX_STRING_SIZE 40
 
+void print_array(const char arr[NUMBER_OF_STRING][MAX_STRING_SIZE])
+{
+	for (int i = 0; i < NUMBER_OF_STRING; i++)
+	{
+		printf("'%s' has length %d\n", arr[i], strlen(arr[i]));
+	}
+}
 int main(){
-    char str[] = "finding first and last occurrence of a character is amazing";
-	char alpha[] = "abcdefghijklmnopqrstuvwxyz";
+    char arr[NUMBER_OF_STRING][MAX_STRING_SIZE] =
+	{ "array of c string",
+	  "is fun to use",
+	  "make sure to properly",
+	  "tell the array size"
+	};
 
-	printf("String to search: %s\n", str);
-	printf("Length of string: %d\n", strlen(str));
-	printf("Char: first last\n");
+	printf("Before reverse:\n");
+	print_array(arr);
 
-	for (int i = 0; i < strlen(alpha); i++)
+	for (int i = 0; i < NUMBER_OF_STRING; i++)
 	{
-		char *position_ptr = strchr(str, alpha[i]);
-		char *r_position_ptr = strrchr(str, alpha[i]);
-
-		int position = (position_ptr == NULL ? -1 : position_ptr - str);
-		int r_position = (r_position_ptr == NULL ? -1 : r_position_ptr - str);
-
-		printf("%4c: %4d %4d\n", alpha[i], position, r_position);
+		for (int j = 0, k = strlen(arr[i]) - 1; j < k; j++, k--)
+		{
+			char temp = arr[i][j];
+			arr[i][j] = arr[i][k];
+			arr[i][k] = temp;
+		}
 	}
 
-	char string[] = "teacher teach tea";
-	char search[] = "ac";
-	char *ptr = strstr(string, search);
-
-
-	if (ptr != NULL) /* Substring found */
-	{
-        int positionStr = ptr - string;
-		printf("======================\n'%s' contains '%s'\n at position %d \n========================", string, search, positionStr );
-	}
-	else /* Substring not found */
-	{
-		printf("'%s' doesn't contain '%s'\n", string, search);
-	}
-
-    char bgstr[] = "finding digits where there could be digit 5236 is amazing";
-	char digits[] = "0123456789";
-	char *ptro = strpbrk(bgstr, digits);
-
-	if (ptro != NULL) /* Expected character is found */
-	{
-		printf("\n'%s' contains at least one character from '%s'\n", bgstr, digits);
-	}
-	else /* Expected character isn't found */
-	{
-		printf("'%s' doesn't contain any character from '%s'\n", bgstr, digits);
-	}
+	printf("\nAfter reverse:\n");
+	print_array(arr);
 
 	return 0;
 }
