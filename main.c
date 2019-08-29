@@ -12,19 +12,23 @@ int lire(char *chaine, int longueur);
 #define DEST_SIZE 40
 
 int main(){
-    char src[] = "Look Here";
-	char dest[DEST_SIZE] = "Unimaginable";
-    char src2[] = "Look @Me";
-	char dest2[DEST_SIZE] = "whats froke";
+    char str[] = "finding first and last occurrence of a character is amazing";
+	char alpha[] = "abcdefghijklmnopqrstuvwxyz";
 
-	char *p = dest + 5;
+	printf("String to search: %s\n", str);
+	printf("Length of string: %d\n", strlen(str));
+	printf("Char: first last\n");
 
-	strcpy(p, src);
-	printf("\n %s",  dest);
+	for (int i = 0; i < strlen(alpha); i++)
+	{
+		char *position_ptr = strchr(str, alpha[i]);
+		char *r_position_ptr = strrchr(str, alpha[i]);
 
+		int position = (position_ptr == NULL ? -1 : position_ptr - str);
+		int r_position = (r_position_ptr == NULL ? -1 : r_position_ptr - str);
 
-	strncpy(dest2, src2, 5);
-    printf("\n %s", dest2);
+		printf("%4c: %4d %4d\n", alpha[i], position, r_position);
+	}
 
 	return 0;
 }
