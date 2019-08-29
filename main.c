@@ -14,12 +14,17 @@ int lire(char *chaine, int longueur);
 int main(){
     char src[] = "Look Here";
 	char dest[DEST_SIZE] = "Unimaginable";
+    char src2[] = "Look @Me";
+	char dest2[DEST_SIZE] = "whats froke";
 
-	char *ps = src + 4;
-	char *pd = dest + strlen(dest);
+	char *p = dest + 5;
 
-	strcpy(pd, ps);
-	printf(dest);
+	strcpy(p, src);
+	printf("\n %s",  dest);
+
+
+	strncpy(dest2, src2, 5);
+    printf("\n %s", dest2);
 
 	return 0;
 }
