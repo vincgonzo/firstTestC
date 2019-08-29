@@ -45,7 +45,18 @@ int main(){
 		printf("'%s' doesn't contain '%s'\n", string, search);
 	}
 
+    char bgstr[] = "finding digits where there could be digit 5236 is amazing";
+	char digits[] = "0123456789";
+	char *ptro = strpbrk(bgstr, digits);
 
+	if (ptro != NULL) /* Expected character is found */
+	{
+		printf("\n'%s' contains at least one character from '%s'\n", bgstr, digits);
+	}
+	else /* Expected character isn't found */
+	{
+		printf("'%s' doesn't contain any character from '%s'\n", bgstr, digits);
+	}
 
 	return 0;
 }
