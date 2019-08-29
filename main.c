@@ -30,6 +30,23 @@ int main(){
 		printf("%4c: %4d %4d\n", alpha[i], position, r_position);
 	}
 
+	char string[] = "teacher teach tea";
+	char search[] = "ac";
+	char *ptr = strstr(string, search);
+
+
+	if (ptr != NULL) /* Substring found */
+	{
+        int positionStr = ptr - string;
+		printf("======================\n'%s' contains '%s'\n at position %d \n========================", string, search, positionStr );
+	}
+	else /* Substring not found */
+	{
+		printf("'%s' doesn't contain '%s'\n", string, search);
+	}
+
+
+
 	return 0;
 }
 
